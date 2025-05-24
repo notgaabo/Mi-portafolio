@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- --------- UNICONS ---------- -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
-
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <!-- --------- CSS ---------- -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- --------- FAVICON ---------- -->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
-
-    <title>Portfolio | Manuel</title>
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <title>Portfolio | Manuel </title>
 </head>
 <body>
    <div class="container">
@@ -63,7 +59,7 @@
                 <p>Soy <span class="typedText"></span></p>
             </div>
             <div class="featured-text-info">
-                <p>Desarrollador frontend experimentado con pasión por crear imágenes visualmente impresionantes.
+                <p>Desarrollador frontend experimentado con pasión por crear imágenes visualmente impresionantes
                     y sitios web fáciles de usar.
                 </p>
             </div>
@@ -85,7 +81,6 @@
                 <p>Desplazate hacia abajo</p>
             </a>
           </div>
-
        </section>
        <!-- -------------- ABOUT BOX ---------------- -->
        <section class="section" id="about">
@@ -99,9 +94,8 @@
                     <p>Tengo una gran experiencia creando sitios webs con HTML, CSS y JavaScript.
                         Al igual que en el Frontend tengo experiencia en el Backend y creacion de apps tengo habilidades
                          en Python, Flutter, Dart y php, tambien se sobre Base De Datos con MySQL y Sql Server
-                         
                     </p>
-                    <br />
+                    <br>
                     <div class="about-btn">
                         <button class="btn">Descarga CV <i class="uil uil-import"></i></button>
                     </div>
@@ -145,7 +139,6 @@
        </section>
 
        <!-- -------------- PROJECT BOX ---------------- -->
-
        <section class="section" id="projects">
           <div class="top-header">
               <h1>Proyectos</h1>
@@ -154,23 +147,22 @@
             <div class="project-box">
                 <i class="uil uil-briefcase-alt"></i>
                 <h3>Completados</h3>
-                <label>15+ Proyectos Terminados</label>
+                <label id="completed-projects">Loading...</label>
             </div>
             <div class="project-box">
                 <i class="uil uil-users-alt"></i>
                 <h3>Clientes</h3>
-                <label>25+ Clientes Felices</label>
+                <label id="clients-helped">Loading...</label>
             </div>
             <div class="project-box">
                 <i class="uil uil-award"></i>
                 <h3>Experience</h3>
-                <label>7+ Años</label>
+                <label id="experience-years">2+ Años</label>
             </div>
           </div>
        </section>
 
        <!-- -------------- CONTACT BOX ---------------- -->
-
        <section class="section" id="contact">
           <div class="top-header">
             <h1>Ponte en contacto</h1>
@@ -187,8 +179,8 @@
              <div class="col">
                 <div class="form-control">
                     <div class="form-inputs">
-                        <input type="text" class="input-field" placeholder="Name" />
-                        <input type="text" class="input-field" placeholder="Email" />
+                        <input type="text" class="input-field" placeholder="Name">
+                        <input type="text" class="input-field" placeholder="Email">
                     </div>
                     <div class="text-area">
                         <textarea placeholder="Message"></textarea>
@@ -200,7 +192,6 @@
              </div>
           </div>
        </section>
-
     </main>
 
     <!-- --------------- FOOTER --------------- -->
@@ -231,37 +222,61 @@
             <div class="icon"><i class="uil uil-github-alt"></i></div>
         </div>
         <div class="bottom-footer">
-            <p>
-                Copyright &copy; <a href="#home" style="text-decoration: none;">Manuel Arias</a> -
-                Todos los derechos reservados
-            </p>
+            <p>Copyright © <a href="#home" style="text-decoration: none;">Manuel Arias</a> - Todos los derechos reservados </p>
         </div>
     </footer>
-   </div>
-
+    </div>
+<!-- Mantén todo el HTML anterior hasta la sección de scripts, y reemplaza el script personalizado con lo siguiente -->
     <!-- ----- TYPING JS Link ----- -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-
     <!-- ----- SCROLL REVEAL JS Link----- -->
     <script src="https://unpkg.com/scrollreveal"></script>
-
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/main.js"></script>
-
+    <!-- ----- CUSTOM JS FOR EXPERIENCE AND GITHUB API ----- -->
     <script>
-      // Typed.js initialization for the typedText span
-      const typed = new Typed(".typedText", {
-        strings: ["Desarrollador Frontend", "Diseñador Web", "Creador de Contenido"],
-        typeSpeed: 80,
-        backSpeed: 60,
-        loop: true
-      });
+        // Function to calculate years of experience
+        function updateExperience() {
+            const startYear = 2023; // Starting year for 2 years of experience in 2025
+            const currentYear = new Date().getFullYear();
+            const yearsOfExperience = currentYear - startYear;
+            document.getElementById('experience-years').textContent = `${yearsOfExperience}+ Años`;
+        }
 
-      // Mobile menu toggle
-      function myMenuFunction() {
-        const navMenu = document.getElementById("myNavMenu");
-        navMenu.classList.toggle("active"); // Debes tener CSS para mostrar/ocultar menú con esta clase
-      }
+        // Function to fetch GitHub repositories
+        async function fetchGitHubRepos() {
+            try {
+                const response = await fetch('https://api.github.com/users/notgaabo', {
+                    headers: {
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                const repoCount = data.public_repos || 0;
+                // Use 15 as default if repoCount is 0 or invalid
+                const displayCount = repoCount > 0 ? repoCount : 15;
+                document.getElementById('completed-projects').textContent = `${displayCount}+ Proyectos Terminados`;
+                document.getElementById('clients-helped').textContent = `${displayCount}+ Clientes Felices`;
+            } catch (error) {
+                console.error('Error fetching GitHub repos:', error);
+                // Default to 15 if API fails
+                document.getElementById('completed-projects').textContent = '15+ Proyectos Terminados';
+                document.getElementById('clients-helped').textContent = '15+ Clientes Felices';
+            }
+        }
+
+        // Initialize on page load
+        window.onload = function() {
+            updateExperience();
+            fetchGitHubRepos();
+            // Call existing main.js functions if needed
+            if (typeof myMenuFunction === 'function') {
+                myMenuFunction();
+            }
+        };
     </script>
 </body>
 </html>
