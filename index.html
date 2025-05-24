@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- --------- UNICONS ---------- -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" />
 
     <!-- --------- CSS ---------- -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
 
     <!-- --------- FAVICON ---------- -->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
 
-    <title>Portfolio | Manuel </title>
+    <title>Portfolio | Manuel</title>
 </head>
 <body>
    <div class="container">
@@ -50,7 +50,6 @@
             <i class="uil uil-bars" onclick="myMenuFunction()"></i>
         </div>
       </nav>
-
 
     <!-- -------------- MAIN ---------------- -->
     <main class="wrapper">
@@ -102,7 +101,7 @@
                          en Python, Flutter, Dart y php, tambien se sobre Base De Datos con MySQL y Sql Server
                          
                     </p>
-                    <br>
+                    <br />
                     <div class="about-btn">
                         <button class="btn">Descarga CV <i class="uil uil-import"></i></button>
                     </div>
@@ -188,8 +187,8 @@
              <div class="col">
                 <div class="form-control">
                     <div class="form-inputs">
-                        <input type="text" class="input-field" placeholder="Name">
-                        <input type="text" class="input-field" placeholder="Email">
+                        <input type="text" class="input-field" placeholder="Name" />
+                        <input type="text" class="input-field" placeholder="Email" />
                     </div>
                     <div class="text-area">
                         <textarea placeholder="Message"></textarea>
@@ -203,7 +202,6 @@
        </section>
 
     </main>
-
 
     <!-- --------------- FOOTER --------------- -->
     <footer>
@@ -233,22 +231,37 @@
             <div class="icon"><i class="uil uil-github-alt"></i></div>
         </div>
         <div class="bottom-footer">
-            <p>Copyright &copy; <a href="#home" style="text-decoration: none;">Manuel Arias</a> - Todos los derechos reservados </p>
+            <p>
+                Copyright &copy; <a href="#home" style="text-decoration: none;">Manuel Arias</a> -
+                Todos los derechos reservados
+            </p>
         </div>
     </footer>
-
-    </div>
-
-
-
+   </div>
 
     <!-- ----- TYPING JS Link ----- -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
-       <!-- ----- SCROLL REVEAL JS Link----- -->
+    <!-- ----- SCROLL REVEAL JS Link----- -->
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <!-- ----- MAIN JS ----- -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+      // Typed.js initialization for the typedText span
+      const typed = new Typed(".typedText", {
+        strings: ["Desarrollador Frontend", "Diseñador Web", "Creador de Contenido"],
+        typeSpeed: 80,
+        backSpeed: 60,
+        loop: true
+      });
+
+      // Mobile menu toggle
+      function myMenuFunction() {
+        const navMenu = document.getElementById("myNavMenu");
+        navMenu.classList.toggle("active"); // Debes tener CSS para mostrar/ocultar menú con esta clase
+      }
+    </script>
 </body>
 </html>
