@@ -10,6 +10,21 @@
     <!-- --------- FAVICON ---------- -->
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
     <title>Portfolio | Manuel </title>
+    <style>
+        /* Estilos personalizados para los botones de CV */
+        .btn.cv-button {
+            color: #000 !important; /* Texto negro por defecto */
+            transition: color 0.3s ease;
+        }
+        
+        .btn.cv-button:hover {
+            color: #fff !important; /* Texto blanco al hacer hover */
+        }
+        
+        .btn.cv-button i {
+            color: inherit; /* El icono hereda el color del texto */
+        }
+    </style>
 </head>
 <body>
    <div class="container">
@@ -40,7 +55,7 @@
             </ul>
         </div>
         <div class="nav-button">
-            <button class="btn">Descarga CV<i class="uil uil-file-alt"></i></button>
+            <a href="assets/pdf/cv_manuel_arias.pdf" download class="btn cv-button" style="text-decoration: none;">Descarga CV<i class="uil uil-file-alt"></i></a>
         </div>
         <div class="nav-menu-btn">
             <i class="uil uil-bars" onclick="myMenuFunction()"></i>
@@ -65,7 +80,7 @@
             </div>
             <div class="featured-text-btn">
                 <button class="btn blue-btn">Contratame</button>
-                <button class="btn">Descarga CV <i class="uil uil-file-alt"></i></button>
+                <a href="assets/pdf/cv_manuel_arias.pdf" download class="btn cv-button" style="text-decoration: none;">Descarga CV <i class="uil uil-file-alt"></i></a>
             </div>
             <div class="social_icons">
                 <div class="icon"><i class="uil uil-instagram"></i></div>
@@ -97,7 +112,7 @@
                     </p>
                     <br>
                     <div class="about-btn">
-                        <button class="btn">Descarga CV <i class="uil uil-import"></i></button>
+                        <a href="assets/pdf/cv_manuel_arias.pdf" download class="btn cv-button" style="text-decoration: none;">Descarga CV <i class="uil uil-import"></i></a>
                     </div>
                 </div>
             </div>
@@ -226,7 +241,7 @@
         </div>
     </footer>
     </div>
-<!-- Mantén todo el HTML anterior hasta la sección de scripts, y reemplaza el script personalizado con lo siguiente -->
+
     <!-- ----- TYPING JS Link ----- -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <!-- ----- SCROLL REVEAL JS Link----- -->
