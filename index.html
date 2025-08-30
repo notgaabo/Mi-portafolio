@@ -290,6 +290,7 @@
     </script>
     <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
 (function(){
    emailjs.init("_t0UJvcQfLC-tAoA6"); 
@@ -298,27 +299,50 @@
 document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const now = new Date();
-    const tiempo = now.toLocaleString(); // fecha y hora actual
+    const name = document.getElementById("name").value;
+    const userEmail = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    const tiempo = new Date().toLocaleString();
 
-    const params = {
-        from_name: document.getElementById("name").value,
-        email_id: document.getElementById("email").value,
-        message: document.getElementById("message").value,
+    // ---------------------------------------
+    // 1️⃣ Email al propietario
+    // ---------------------------------------
+    const paramsOwner = {
+        from_name: name,
+        email_id: userEmail,  // debe coincidir con {{email_id}} en la plantilla
+        message: message,
         tiempo: tiempo
     };
 
-    emailjs.send("service_puwc7eg", "template_00vxroi", params)
-    .then(function(res) {
-        alert("✅ Mensaje enviado con éxito, te contactaré pronto.");
-        document.getElementById("contact-form").reset();
+    emailjs.send("service_puwc7eg", "template_00vxroi", paramsOwner)
+    .then(res => {
+        console.log("Mensaje enviado al propietario correctamente");
+
+        // ---------------------------------------
+        // 2️⃣ Email de confirmación al usuario
+        // ---------------------------------------
+        const paramsUser = {
+            email: userEmail,              // To Email en la plantilla
+            from_name: "Yoensi Arias",     // From Name
+            from_email: "tu-correo@gmail.com", // From Email (verificado en EmailJS)
+            message: "¡Gracias por contactarme! Hemos recibido tu mensaje correctamente y te responderé lo antes posible."
+        };
+
+        emailjs.send("service_puwc7eg", "template_1yd2ako", paramsUser)
+        .then(res => {
+            alert("✅ Mensaje enviado con éxito y confirmación al usuario.");
+            document.getElementById("contact-form").reset();
+        })
+        .catch(err => {
+            alert("❌ Error al enviar confirmación: " + JSON.stringify(err));
+        });
+
     })
-    .catch(function(err) {
-        alert("❌ Error al enviar: " + JSON.stringify(err));
+    .catch(err => {
+        alert("❌ Error al enviar al propietario: " + JSON.stringify(err));
     });
 });
 </script>
-
 
 </body>
 </html>
