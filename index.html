@@ -291,30 +291,34 @@
     <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-   (function(){
-      // Inicializa con tu Public Key de EmailJS
-      emailjs.init("_t0UJvcQfLC-tAoA6"); 
-   })();
+(function(){
+   emailjs.init("_t0UJvcQfLC-tAoA6"); 
+})();
 
-   document.getElementById("contact-form").addEventListener("submit", function(e) {
-       e.preventDefault();
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-       const params = {
-           from_name: document.getElementById("name").value,
-           email_id: document.getElementById("email").value,
-           message: document.getElementById("message").value
-       };
+    const now = new Date();
+    const tiempo = now.toLocaleString(); // fecha y hora actual
 
-       emailjs.send("service_puwc7eg", "template_00vxroi", params)
-       .then(function(res) {
-           alert("✅ Mensaje enviado con éxito, te contactaré pronto.");
-           document.getElementById("contact-form").reset();
-       })
-       .catch(function(err) {
-           alert("❌ Error al enviar: " + JSON.stringify(err));
-       });
-   });
+    const params = {
+        from_name: document.getElementById("name").value,
+        email_id: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+        tiempo: tiempo
+    };
+
+    emailjs.send("service_puwc7eg", "template_00vxroi", params)
+    .then(function(res) {
+        alert("✅ Mensaje enviado con éxito, te contactaré pronto.");
+        document.getElementById("contact-form").reset();
+    })
+    .catch(function(err) {
+        alert("❌ Error al enviar: " + JSON.stringify(err));
+    });
+});
 </script>
+
 
 </body>
 </html>
