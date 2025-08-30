@@ -192,13 +192,14 @@
           </div>
        </section>
 
-       <!-- -------------- CONTACT BOX ---------------- -->
+       <!-- -------------- CONTACT BOX ---------------- --><!-- -------------- CONTACT BOX ---------------- -->
 <section class="section" id="contact">
   <div class="top-header">
     <h1>Ponte en contacto</h1>
     <span>Si tienes un proyecto en mente, contáctame ahora.</span>
   </div>
   <div class="row">
+     <!-- Contact Info -->
      <div class="col">
         <div class="contact-info">
             <h2>Envíame <i class="uil uil-corner-right-down"></i></h2>
@@ -207,7 +208,24 @@
             <p><i class="uil uil-map-marker"></i> Ensanche Espaillat, C/ Interior J #68</p>
         </div>
      </div>
+
+     <!-- Contact Form -->
      <div class="col">
+        <form id="contact-form" class="form-control">
+            <div class="form-inputs">
+                <input type="text" id="name" class="input-field" placeholder="Nombre" required>
+                <input type="email" id="email" class="input-field" placeholder="Email" required>
+            </div>
+            <div class="text-area">
+                <textarea id="message" placeholder="Mensaje" required></textarea>
+            </div>
+            <div class="form-button">
+                <button type="submit" class="btn">Enviar <i class="uil uil-message"></i></button>
+            </div>
+        </form>
+     </div>
+  </div>
+</section>
 
     </main>
 
@@ -287,7 +305,7 @@
            message: document.getElementById("message").value
        };
 
-       emailjs.send("service_puwc7eg", "TU_TEMPLATE_ID", params)
+       emailjs.send("service_puwc7eg", "template_00vxroi", params)
        .then(function(res) {
            alert("✅ Mensaje enviado con éxito, te contactaré pronto.");
            document.getElementById("contact-form").reset();
